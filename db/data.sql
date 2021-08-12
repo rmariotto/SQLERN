@@ -1,0 +1,15 @@
+DROP TABLE IF EXISTS videos CASCADE;
+DROP TABLE IF EXISTS comments;
+
+CREATE TABLE videos(
+    id SERIAL PRIMARY KEY,
+    file VARCHAR NOT NULL
+);
+
+CREATE TABLE comments(
+    id SERIAL PRIMARY KEY,
+    comment TEXT NOT NULL,
+    videos_id INT NOT NULL, 
+    FOREIGN KEY ("videos_id") REFERENCES videos(id),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
